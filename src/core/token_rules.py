@@ -22,3 +22,15 @@ def spend(balance: int, cost: int) -> SpendResult:
         return SpendResult(new_balance=balance, success=False, reason="insufficient_tokens")
     else:
         return SpendResult(new_balance=balance - cost, success=True, reason=None)
+    
+def should_refresh(last_refresh: date, today: date) -> bool:
+    if today > last_refresh:
+        return True
+    else:
+        return False
+
+def refresh_balance_if_needed(balance: int, daily_tokens: int, last_refresh: date, today: date) -> tuple[int, date]:
+    if should_refresh(last_refresh, today):
+        return (daily_tokens, today)
+    else:
+        return (balance, last_refresh)
