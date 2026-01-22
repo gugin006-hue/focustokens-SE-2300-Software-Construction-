@@ -1,7 +1,7 @@
 from src.data.db import get_connection
 
 def create_tables() -> None:
-    with get_connection as conn:
+    with get_connection() as conn:
         cur = conn.cursor()
 
         cur.execute("""
