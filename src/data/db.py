@@ -1,6 +1,7 @@
 import sqlite3
 from pathlib import Path
 
+# Connection to the database
 DB_PATH = Path("focustokens.db")
 
 def get_connection() -> sqlite3.Connection:

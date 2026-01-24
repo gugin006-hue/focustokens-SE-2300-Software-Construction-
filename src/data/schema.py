@@ -1,5 +1,6 @@
 from src.data.db import get_connection
 
+#Creates the tables of the database
 def create_tables() -> None:
     with get_connection() as conn:
         cur = conn.cursor()
